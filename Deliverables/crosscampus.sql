@@ -2,7 +2,7 @@
 
 # Remove "/*" above if database already exists
 
-USE crosscampus;
+USE  crosscampus;
 DROP TIGGER IF EXISTS user_before_insert;
 DROP TIGGER IF EXISTS file_before_insert;
 DROP TIGGER IF EXISTS entry_before_insert;
@@ -24,7 +24,8 @@ DROP DATABASE IF EXISTS crosscampus;
 
 CREATE DATABASE IF NOT EXISTS crosscampus;
 USE crosscampus;
-CREATE USER IF NOT EXISTS xcampus;
+CREATE USER IF NOT EXISTS 
+xcampus;
 GRANT all ON crosscampus.* TO 'xcampus'@'localhost' IDENTIFIED BY 'GBCxcamp'; 
 
 CREATE TABLE users
