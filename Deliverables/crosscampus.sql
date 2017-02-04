@@ -104,7 +104,7 @@ CREATE TABLE entryType
 
 CREATE TABLE entry
 (
-  id int(16) NOT NULL,
+  id int(16) NOT NULL AUTO_INCREMENT,
   author int(16) NOT NULL,
   parentID int(16) NULL,
   name varchar(128) NOT NULL,
@@ -137,7 +137,7 @@ BEFORE INSERT
 
 CREATE TABLE file
 (
-	id int(16) NOT NULL,
+	id int(16) NOT NULL AUTO_INCREMENT,
 	fileName varchar(255) NOT NULL,
 	dateAdded date,
 	archived date,
@@ -171,7 +171,7 @@ CREATE TABLE notification
 
 	CONSTRAINT pk_notifications PRIMARY KEY (entryID, userID),
 	CONSTRAINT fk_notification_entry FOREIGN KEY (entryID) REFERENCES entry(id),
-	CONSTRAINT fk_notification_user FOREIGN KEY (userID) REFERENCES users(id)
+	CONSTRAINT fk_notification_user FOREIGN KEY (userID) REFERENCES users(id),
 );
 
 CREATE TABLE favourite
