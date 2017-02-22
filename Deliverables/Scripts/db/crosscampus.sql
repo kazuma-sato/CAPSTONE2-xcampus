@@ -1,12 +1,14 @@
-/* 
+/*
 
 # Remove "/*" above if database already exists
 
 USE  crosscampus;
+
 DROP TIGGER IF EXISTS user_before_insert;
 DROP TIGGER IF EXISTS file_before_insert;
 DROP TIGGER IF EXISTS entry_before_insert;
 DROP TIGGER IF EXISTS entry_before_update;
+
 DROP TABLE IF EXISTS favourite;
 DROP TABLE IF EXISTS notification;
 DROP TABLE IF EXISTS rating;
@@ -20,7 +22,7 @@ DROP TABLE IF EXISTS institution;
 DROP TABLE IF EXISTS users;
 
 DROP DATABASE IF EXISTS crosscampus;
-#*/
+*/
 
 CREATE DATABASE IF NOT EXISTS crosscampus;
 USE crosscampus;
@@ -36,24 +38,19 @@ CREATE TABLE users
   firstname varchar(32) NOT NULL,
   lastname varchar(32) NOT NULL,
   email varchar(128) NOT NULL,
-  dateCreated date,
+  dateCreated timestamp DEFAULT CURRENT_TIMESTAMP,
   google varchar(256),
   twitter varchar(256),
   facebook varchar(256),
 
   CONSTRAINT pk_user PRIMARY KEY (id)
 );
-CREATE TRIGGER user_before_insert
-BEFORE INSERT
-	ON users FOR EACH ROW
-	SET NEW.dateCreated = SYSDATE();
-
 
 CREATE TABLE institution
 (
 	id int(16) NOT NULL AUTO_INCREMENT,
 	name varchar(256) NOT NULL,
-	emailDomain varchar(256) NOT NULL,
+	domain varchar(256) NOT NULL,
 
 	CONSTRAINT pk_institution PRIMARY KEY (id)
 );
@@ -87,7 +84,7 @@ CREATE TABLE course
 	description varchar(1024),
 	programCode varchar(16) NOT NULL,
 	institution int(16) NOT NULL,
-	startSemester date NOT NULL, /*needs revision*/
+	startSemester date NOT NULL, 
 
 	CONSTRAINT pk_course PRIMARY KEY (id, programCode, institution, startSemester),
 	CONSTRAINT fk_course_programCode FOREIGN KEY (programCode, startSemester, institution) 
@@ -110,37 +107,40 @@ CREATE TABLE entry
   name varchar(128) NOT NULL,
   entryType int(16) NOT NULL,
   description varchar(1024) NOT NULL,
-  dateCreated date,
-  dateModified date,
+  dateCreated timestamp DEFAULT CURRENT_TIMESTAMP,
+  dateModified timestamp NULL ON UPDATE CURRENT_TIMESTAMP,
   courseID varchar(16) NOT NULL,
   programCode varchar(16) NOT NULL,
   institution int(16) NOT NULL,
   startSemester date NOT NULL,
+  flaggedBy int(16),
+  dateFlagged date,
 
   CONSTRAINT pk_entry PRIMARY KEY (id),
   CONSTRAINT fk_entry_parentID FOREIGN KEY (parentID) REFERENCES entry(id),
   CONSTRAINT fk_entry_user FOREIGN KEY (author) REFERENCES users (id),
   CONSTRAINT fk_entry_type FOREIGN KEY (entryType) REFERENCES entryType (id),
   CONSTRAINT fk_entry_course FOREIGN KEY (courseID, programCode, institution, startSemester)
-  	REFERENCES course(id, programCode, institution, startSemester)
+  	REFERENCES course(id, programCode, institution, startSemester),
+  CONSTRAINT fk_entry_flaggedBy FOREIGN KEY (flaggedBy) REFERENCES users (id)
 );
-CREATE TRIGGER entry_before_insert
-BEFORE INSERT
-	ON users FOR EACH ROW
-	SET NEW.dateCreated = SYSDATE();
+DELIMITER //
 
 CREATE TRIGGER entry_before_update
-BEFORE INSERT
-	ON users FOR EACH ROW
-	INSERT INTO entry_audit(dateModified) 
-		VALUES (SYSDATE());
+BEFORE UPDATE
+	ON entry FOR EACH ROW
+		IF NEW.flaggedBy<=>OLD.flaggedBy THEN
+			SET NEW.dateFlagged = CURRENT_TIMESTAMP();
+		END IF;//
+
+DELIMITER ;
 
 CREATE TABLE file
 (
 	id int(16) NOT NULL AUTO_INCREMENT,
 	fileName varchar(255) NOT NULL,
-	dateAdded date,
-	archived date,
+	dateAdded timestamp DEFAULT CURRENT_TIMESTAMP,
+	dateArchived date,
 	approvedBy int(16),
 	directoryLocation varchar(1024) NOT NULL,
 	entryID int(16) NOT NULL,
@@ -148,11 +148,16 @@ CREATE TABLE file
 	CONSTRAINT pk_file PRIMARY KEY (id),
 	CONSTRAINT fk_file_entry FOREIGN KEY (entryID) REFERENCES entry(id)
 );
+DELIMITER //
 
-CREATE TRIGGER file_before_insert
-BEFORE INSERT
-	ON users FOR EACH ROW
-	SET NEW.dateCreated = SYSDATE();
+CREATE TRIGGER file_before_update
+BEFORE UPDATE
+		ON file FOR EACH ROW
+		IF NEW.approvedBy<=>OLD.approvedBy THEN
+			SET NEW.dateArchived = CURRENT_TIMESTAMP();
+		END IF;//
+
+DELIMITER ;
 
 CREATE TABLE rating
 (
@@ -169,9 +174,9 @@ CREATE TABLE notification
 	entryID int(16) NOT NULL,
 	userID int(16) NOT NULL,
 
-	CONSTRAINT pk_notifications PRIMARY KEY (entryID, userID),
+	CONSTRAINT pk_notification PRIMARY KEY (entryID, userID),
 	CONSTRAINT fk_notification_entry FOREIGN KEY (entryID) REFERENCES entry(id),
-	CONSTRAINT fk_notification_user FOREIGN KEY (userID) REFERENCES users(id),
+	CONSTRAINT fk_notification_user FOREIGN KEY (userID) REFERENCES users(id)
 );
 
 CREATE TABLE favourite
