@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+   <RelativeLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content">
+
+       <RelativeLayout android:id="@+id/one" xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/label_post_title"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="20dp"
+        android:text="Javascript Textbook for sale!"/>
+
+    <TextView
+        android:id="@+id/label_post_auther"
+        android:layout_below="@+id/label_post_title"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:text="tester-testserson"/>
+
+           <LinearLayout
+        android:id="@+id/fuleUploadWrap"
+        android:layout_below="@id/label_post_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/img_file_upload"
+            android:layout_below="@+id/input_desc"
+            android:src="@drawable/clock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="75dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:layout_marginLeft="15dp"
+            android:textSize="15dp"
+            android:text="2017/03/24"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_view_post"
+        android:layout_below="@+id/fuleUploadWrap"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="#FF5722"
+        android:textColor="#fff"
+        android:text="View More"/>
+
+    <View
+        android:layout_below="@id/button_view_post"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="5dp"
+        android:background="#000"/>
+
+           <TextView
+               android:id="@+id/label_post_desc"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="15dp"
+               android:text="Jasvascript text for $100. Used for 2nd semester! First comment gets it!"
+               android:layout_below="@+id/label_post_auther"
+               android:layout_alignParentLeft="true"
+               android:layout_alignParentStart="true"
+               android:layout_marginTop="13dp"
+               android:textAlignment="center" />
+
+       </RelativeLayout>
+
+       <RelativeLayout android:id="@+id/two" android:layout_below="@id/one" xmlns:android="http://schemas.android.com/apk/res/android"
+           android:layout_width="match_parent" android:layout_height="match_parent">
+
+           <TextView
+               android:id="@+id/label_post_title2"
+               android:layout_centerHorizontal="true"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="10dp"
+               android:textSize="20dp"
+               android:text="PHP Notes!"/>
+
+           <TextView
+               android:id="@+id/label_post_auther2"
+               android:layout_below="@+id/label_post_title2"
+               android:layout_centerHorizontal="true"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="15dp"
+               android:text="tester-testserson"/>
+
+           <TextView
+               android:id="@+id/label_post_desc2"
+               android:layout_below="@+id/label_post_auther2"
+               android:layout_centerHorizontal="true"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="15dp"
+               android:text="testing dessc"
+               tools:text="MySql connection lecture" />
+
+           <LinearLayout
+               android:id="@+id/fuleUploadWrap2"
+               android:layout_below="@id/label_post_desc2"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal">
+
+               <ImageView
+                   android:id="@+id/img_file_upload2"
+                   android:layout_below="@+id/input_desc2"
+                   android:src="@drawable/clock"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="40dp"
+                   android:layout_marginLeft="75dp"/>
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="45dp"
+                   android:layout_marginLeft="15dp"
+                   android:textSize="15dp"
+                   android:text="2017/03/20"/>
+
+           </LinearLayout>
+
+           <Button
+               android:id="@+id/button_view_post2"
+               android:layout_below="@+id/fuleUploadWrap2"
+               android:layout_centerHorizontal="true"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="15dp"
+               android:background="#FF5722"
+               android:textColor="#fff"
+               android:text="View More"/>
+
+           <View
+               android:layout_below="@id/button_view_post2"
+               android:layout_width="match_parent"
+               android:layout_height="2dp"
+               android:layout_marginTop="5dp"
+               android:background="#000"/>
+
+       </RelativeLayout>
+
+       <RelativeLayout android:id="@+id/three" android:layout_below="@id/two" xmlns:android="http://schemas.android.com/apk/res/android"
+           android:layout_width="match_parent" android:layout_height="match_parent">
+
+           <TextView
+               android:id="@+id/label_post_title3"
+               android:layout_centerHorizontal="true"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="10dp"
+               android:textSize="20dp"
+               android:text="Study group for midterms"
+               tools:text="Study group for midterms" />
+
+           <TextView
+               android:id="@+id/label_post_auther3"
+               android:layout_below="@+id/label_post_title3"
+               android:layout_centerHorizontal="true"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="15dp"
+               android:text="tester-testserson"/>
+
+           <TextView
+               android:id="@+id/label_post_desc3"
+               android:layout_below="@+id/label_post_auther3"
+               android:layout_centerHorizontal="true"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="15dp"
+               android:text="Join us this sunday to study for all midterms! Semester 2"
+               android:textAlignment="center" />
+
+           <LinearLayout
+               android:id="@+id/fuleUploadWrap3"
+               android:layout_below="@id/label_post_desc3"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal">
+
+               <ImageView
+                   android:id="@+id/img_file_upload3"
+                   android:layout_below="@+id/input_desc3"
+                   android:src="@drawable/clock"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="40dp"
+                   android:layout_marginLeft="75dp"/>
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="45dp"
+                   android:layout_marginLeft="15dp"
+                   android:textSize="15dp"
+                   android:text="2107/03/01"/>
+
+           </LinearLayout>
+
+           <Button
+               android:id="@+id/button_view_post3"
+               android:layout_below="@+id/fuleUploadWrap3"
+               android:layout_centerHorizontal="true"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="15dp"
+               android:background="#FF5722"
+               android:textColor="#fff"
+               android:text="View More"/>
+
+           <View
+               android:layout_below="@id/button_view_post3"
+               android:layout_width="match_parent"
+               android:layout_height="2dp"
+               android:layout_marginTop="5dp"
+               android:background="#000"/>
+
+       </RelativeLayout>
+
+
+   </RelativeLayout>
+
+</ScrollView>

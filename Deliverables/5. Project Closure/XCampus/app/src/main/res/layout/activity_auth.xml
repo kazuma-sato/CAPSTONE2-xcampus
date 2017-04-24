@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_height="wrap_content"
+    android:layout_width="wrap_content">
+
+    <RelativeLayout
+    android:id="@+id/activity_auth"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.app.capstone.xcampus.Auth">
+
+
+        <!--
+        <Button
+            android:id="@+id/getEntries"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GetEntries"/>
+
+        <Button
+            android:id="@+id/getFavs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GetFavourites"
+            android:layout_below="@+id/getEntries"/>
+
+        <Button
+            android:id="@+id/getNotifications"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GetNotifications"
+            android:layout_below="@+id/getFavs"/>
+
+        <Button
+            android:id="@+id/getRatings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GetRatings"
+            android:layout_below="@+id/getNotifications"
+            />
+
+        <TextView
+            android:id="@+id/entries"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/getRatings"/>
+
+
+        <EditText android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/username"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/password"
+            android:layout_below="@+id/username"/>
+
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forgot Password"
+
+            android:id="@+id/forgotPassBut"
+            android:layout_below="@+id/password"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Register"
+            android:id="@+id/register"
+
+            android:layout_below="@+id/forgotPassBut"
+            android:layout_alignLeft="@+id/forgotPassBut"
+            />
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/loginBut"
+            android:text="Login In"
+            android:layout_below="@+id/register"/>
+
+
+-->
+
+</RelativeLayout>
+</ScrollView>
